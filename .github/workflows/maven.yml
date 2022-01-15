@@ -18,7 +18,7 @@ jobs:
         uses: mirromutth/mysql-action@v1.1
         with:
           character set server: 'utf8'
-          mysql version: '8'
+          mysql version: '5.7'
           mysql database: 'dev_jrtb_db'
           mysql root password: 'root'
           mysql user: 'dev_jrtb_db_user'
