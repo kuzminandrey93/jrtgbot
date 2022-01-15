@@ -23,7 +23,7 @@ jobs:
           mysql user: 'dev_jrtb_db_user'
           mysql password: 'dev_jrtb_db_password'
       - name: Wait for MySQL
-          run: |
+          run:|
             while ! mysqladmin ping -h 127.0.0.1 -p root --silent; do
               sleep 1
             done
