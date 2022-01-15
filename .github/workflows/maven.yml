@@ -11,14 +11,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Set up MySQL
         uses: mirromutth/mysql-action@v1.1
         with:
           character set server: 'utf8'
-          mysql version: '5.7'
+          mysql version: '8'
           mysql database: 'dev_jrtb_db'
           mysql root password: 'root'
           mysql user: 'dev_jrtb_db_user'
