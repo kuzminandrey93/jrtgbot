@@ -25,8 +25,8 @@ jobs:
           mysql root password: 'root'
           mysql user: 'dev_jrtb_db_user'
           mysql password: 'dev_jrtb_db_password'
-          run: |
-            mysql -udev_jrtb_db_user -pdev_jrtb_db_password -h127.0.0.1 -P3306
+      - name: try connect
+        run: mysql -udev_jrtb_db_user -pdev_jrtb_db_password -h127.0.0.1 -P3306
       - name: Set up JDK 1.11
         uses: actions/setup-java@v1
         with:
