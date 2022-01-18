@@ -4,22 +4,19 @@ import com.github.kuzminandrey93.javarushtelegrambot.repository.entity.TelegramU
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.jdbc.Sql;
 
 import java.util.List;
 import java.util.Optional;
 
-import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
 
 /**
  * Integration-level testing for {@link TelegramUserRepository}.
  */
+@SpringBootTest
 @ActiveProfiles("test")
-@DataJpaTest
-@AutoConfigureTestDatabase(replace = NONE)
 public class TelegramUserRepositoryIntegrationTest {
     @Autowired
     private TelegramUserRepository telegramUserRepository;
