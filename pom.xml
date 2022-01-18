@@ -15,6 +15,8 @@
 	<description>JavaRush telegram bot for notification about new aticles</description>
 	<properties>
 		<java.version>11</java.version>
+		<bot.username>name</bot.username>
+		<bot.token>token</bot.token>
 	</properties>
 	<dependencies>
 		<dependency>
