@@ -1,6 +1,9 @@
 FROM adoptopenjdk/openjdk11:ubi
 ARG JAR_FILE=target/*.jar
-ENV BOT_NAME=test_demobot_bot
-ENV BOT_TOKEN=1793756284:AAG3R7ISUK8EMOYXFifACrPWTQz__GZlKQI
+ENV BOT_NAME=bot_name
+ENV BOT_TOKEN=bot_token
+ENV BOT_DB_USERNAME=dev_jrtb_db_user
+ENV BOT_DB_PASSWORD=dev_jrtb_db_password
 COPY ${JAR_FILE} app.jar
-ENTRYPOINT ["java", "-Dbot.username=${BOT_NAME}", "-Dbot.token=${BOT_TOKEN}", "-jar", "/app.jar"]
+ENTRYPOINT ["java", "-Dbot.username=${BOT_NAME}", "-Dbot.token=${BOT_TOKEN}", "-Dspring.datasource.username=${BOT_DB_USERNAME}", "-Dspring.datasource.password=${BOT_DB_PASSWORD}", "-jar", "app.jar"]
+
