@@ -5,6 +5,8 @@ import com.github.kuzminandrey93.javarushtelegrambot.service.SendBotMessageServi
 import com.github.kuzminandrey93.javarushtelegrambot.service.TelegramUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import static com.github.kuzminandrey93.javarushtelegrambot.command.CommandUtils.getChatId;
+
 /**
  * Start {@link Command}.
  */
@@ -14,9 +16,10 @@ public class StartCommand implements Command{
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public static final String START_MESSAGE = "Привет. Я Javarush Telegram Bot. Я помогу тебе быть в курсе последних " +
-            "статей тех авторов, котрые тебе интересны. Я еще маленький и только учусь.";
-
+    public final static String START_MESSAGE = "Привет. Я Javarush Telegram Bot.\n " +
+            "Я помогу тебе быть в курсе последних статей тех авторов, которые тебе интересны.\n\n" +
+            "Нажимай /addGroupSub чтобы подписаться на группу статей в JavaRush.\n" +
+            "Не знаешь о чем я? Напиши /help, чтобы узнать что я умею.";
 
     public StartCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -25,7 +28,7 @@ public class StartCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        String chatID = update.getMessage().getChatId().toString();
+        String chatID = getChatId(update);
 
         telegramUserService.findByChatId(chatID).ifPresentOrElse(
                 user -> {

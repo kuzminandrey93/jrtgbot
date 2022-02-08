@@ -4,6 +4,8 @@ import com.github.kuzminandrey93.javarushtelegrambot.service.SendBotMessageServi
 import com.github.kuzminandrey93.javarushtelegrambot.service.TelegramUserService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import static com.github.kuzminandrey93.javarushtelegrambot.command.CommandUtils.getChatId;
+
 /**
  * Stop {@link Command}.
  */
@@ -13,7 +15,8 @@ public class StopCommand implements Command{
     private final SendBotMessageService sendBotMessageService;
     private final TelegramUserService telegramUserService;
 
-    public static final String STOP_MESSAGE = "Деактивировал все ваши подписки \uD83D\uDE1F.";
+    public static final String STOP_MESSAGE = "Деактивировал все твои подписки \uD83D\uDE1F." + "\n" +
+                                                "Ты всегда можешь вернуться нажав /start";
 
     public StopCommand(SendBotMessageService sendBotMessageService, TelegramUserService telegramUserService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -22,9 +25,9 @@ public class StopCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        String chatId = update.getMessage().getChatId().toString();
+        String chatId = getChatId(update);
 
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), STOP_MESSAGE);
+        sendBotMessageService.sendMessage(chatId, STOP_MESSAGE);
         telegramUserService.findByChatId(chatId)
                 .ifPresent(telegramUser -> {
                     telegramUser.setActive(false);
