@@ -3,6 +3,8 @@ package com.github.kuzminandrey93.javarushtelegrambot.command;
 import com.github.kuzminandrey93.javarushtelegrambot.service.SendBotMessageService;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
+import static com.github.kuzminandrey93.javarushtelegrambot.command.CommandUtils.getChatId;
+
 /**
  * Unknown {@link Command}.
  */
@@ -11,7 +13,7 @@ public class UnknownCommand implements Command{
 
     private final SendBotMessageService sendBotMessageService;
 
-    public static final String UNKNOWN_MESSAGE = "Не понимаю вас \uD83D\uDE1F, напишите /help чтобы узнать что я понимаю.";
+    public static final String UNKNOWN_MESSAGE = "Не понимаю тебя \uD83D\uDE1F, напиши /help чтобы узнать какие команды я понимаю.";
 
     public UnknownCommand(SendBotMessageService sendBotMessageService) {
         this.sendBotMessageService = sendBotMessageService;
@@ -19,6 +21,6 @@ public class UnknownCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        sendBotMessageService.sendMessage(update.getMessage().getChatId().toString(), UNKNOWN_MESSAGE);
+        sendBotMessageService.sendMessage(getChatId(update), UNKNOWN_MESSAGE);
     }
 }

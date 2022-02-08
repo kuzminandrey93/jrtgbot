@@ -9,6 +9,7 @@ import java.util.Optional;
 /**
  * {@link Service} for handling {@link TelegramUser} entity.
  */
+
 public interface TelegramUserService {
     /**
      * Save provided {@link TelegramUser} entity.
