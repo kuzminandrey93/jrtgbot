@@ -26,7 +26,7 @@ public class StatCommand implements Command{
 
     @Override
     public void execute(Update update) {
-        int activeUsersCount = telegramUserService.retrieveAllActiveUsers().size();
+        int activeUsersCount = telegramUserService.findAllActiveUsers().size();
 
         sendBotMessageService.sendMessage(getChatId(update), String.format(STAT_MESSAGE, activeUsersCount));
     }
